@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Générateur Carte Santé+</title>
+  <style>
+    body {
+      --link-color: #2dc9a5;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e6f7f5, #f0f0f0);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .form, .iphone {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .form {
+      background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+      text-align: left;
+      color: #123c5d;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #2dc9a5;
+      box-shadow: 0 0 5px rgba(45, 201, 165, 0.5);
+    }
+
+    .iphone {
+      background: #000;
+      padding: 16px;
+      border-radius: 40px;
+    }
+
+    .screen {
+      background: #ffffff;
+      border-radius: 30px;
+      padding: 20px;
+    }
+
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #b2e0db;
+      margin: 0 auto 20px;
+      display: block;
+    }
+
+    h2 {
+      margin: 10px 0 5px;
+      font-size: 22px;
+      color: #1e7f74;
+      text-align: center;
+    }
+
+    p.speciality {
+      font-size: 14px;
+      color: #5a9c94;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .info {
+      margin: 8px 0;
+      color: #0f0f0f;
+      font-size: 14px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .info strong {
+      font-size: 16px;
+      color: #1e7f74;
+      font-weight: 600;
+    }
+
+    .btn-rdv {
+      display: block;
+      width: 100%;
+      margin-top: 15px;
+      background: linear-gradient(135deg, #2dc9a5, #25b093);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 25px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-rdv:hover {
+      background: linear-gradient(135deg, #25b093, #2dc9a5);
+      transform: scale(1.03);
+    }
+
+    .color-preview {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .color-preview div {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+    }
+
+    #downloadBtn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #2dc9a5, #25b093);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    #downloadBtn:hover {
+      background: linear-gradient(135deg, #25b093, #2dc9a5);
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      .form, .iphone {
+        max-width: 100% !important;
+        flex: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; align-items: flex-start; width: 100%; max-width: 1200px;">
+    <form class="form nfc-form" style="flex: 1; min-width: 300px; max-width: 500px;">
+      <h2>Générateur Carte Santé+</h2>
+
+      <label>Photo :</label>
+      <input type="file" id="photo" accept="image/*" />
+      <label>Nom :</label>
+      <input type="text" id="name" placeholder="Ex : Dr. Alex Dupont" />
+
+      <label>Spécialité :</label>
+      <input type="text" id="speciality" placeholder="Ex : Dentiste, Ostéopathe..." />
+
+      <label>Description :</label>
+      <textarea id="description" placeholder="Ex : Spécialiste en soins esthétiques, implantologie..."></textarea>
+
+      <label>Adresse :</label>
+      <input type="text" id="address" placeholder="Ex : 15 rue de l'Atlas 75019 Paris" />
+
+      <label>Horaires :</label>
+      <input type="text" id="hours" placeholder="Ex : Lundi - Vendredi : 9h - 18h" />
+
+      <label>Téléphone :</label>
+      <input type="text" id="phone" placeholder="Ex : 06 12 34 56 78" />
+
+      <label>Email :</label>
+      <input type="email" id="email" placeholder="Ex : contact@exemple.fr" />
+
+      <label>Doctolib :</label>
+      <input type="url" id="doctolib" placeholder="Ex : https://www.doctolib.fr/mon-profil" />
+
+      <label>🎨 Couleur de fond :</label>
+      <select id="bgColor">
+        <option value="#ffffff">Blanc</option>
+        <option value="#e6f7f5" selected>Bleu clair</option>
+        <option value="#fdf6e3">Beige</option>
+        <option value="#f0f0f0">Gris clair</option>
+        <option value="#fbe9e7">Rose doux</option>
+      </select>
+   
+      <button id="downloadBtn">📥 Télécharger la carte</button>
+    </form>
+
+    <div class="iphone" style="flex: 1; min-width: 300px; max-width: 420px;" id="cardPreview">
+      <div class="screen" id="result">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Photo praticien" class="profile-pic" id="previewPhoto" />
+        <h2 id="previewName">Dr. Nom Prénom</h2>
+        <p class="speciality" id="previewSpeciality">Spécialité</p>
+        <div class="info" id="previewDescription">Présentation du praticien.</div>
+        <div class="info"><strong>Adresse :</strong><br><span id="previewAddress">Adresse</span></div>
+        <div class="info"><strong>Horaires :</strong><br><span id="previewHours">Horaires</span></div>
+        <div class="info"><strong>Téléphone :</strong><br><span id="previewPhone">06 12 34 56 78</span></div>
+        <div class="info"><strong>Email :</strong><br><span id="previewEmail">contact@exemple.fr</span></div>
+        <div class="info"><strong>Doctolib :</strong><br><a href="#" id="previewDoctolib">Lien Doctolib</a></div>
+        <button class="btn-rdv" onclick="window.open(document.getElementById('previewDoctolib').href, '_blank')">Prendre Rendez-vous</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const updatePreview = () => {
+        document.getElementById("previewName").innerText = document.getElementById("name").value;
+        document.getElementById("previewSpeciality").innerText = document.getElementById("speciality").value;
+        document.getElementById("previewDescription").innerText = document.getElementById("description").value;
+        document.getElementById("previewAddress").innerText = document.getElementById("address").value;
+        document.getElementById("previewHours").innerText = document.getElementById("hours").value;
+        document.getElementById("previewPhone").innerText = document.getElementById("phone").value;
+        document.getElementById("previewEmail").innerText = document.getElementById("email").value;
+        document.getElementById("previewDoctolib").href = document.getElementById("doctolib").value;
+      };
+
+      document.querySelectorAll('input, textarea').forEach(input => {
+        input.addEventListener('input', updatePreview);
+      });
+
+      document.getElementById("photo").addEventListener("change", e => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("previewPhoto").src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      document.getElementById("bgColor").addEventListener("change", () => {
+        document.getElementById("result").style.backgroundColor = document.getElementById("bgColor").value;
+      });
+    });
+  </script>
+</body>
+</html>

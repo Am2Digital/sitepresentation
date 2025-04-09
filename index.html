@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carte NFC Digitale</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Animation for cards */
+    .card-container {
+  perspective: 1000px;
+}
+
+.card {
+  width: 300px;
+  height: 180px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  color: white;
+}
+
+.card-front.black {
+  background: linear-gradient(135deg, #111827, #374151);
+}
+
+.card-back.black {
+  background: linear-gradient(135deg, #374151, #111827);
+  transform: rotateY(180deg);
+}
+
+.card-front.silver {
+  background: linear-gradient(135deg, #d1d5db, #9ca3af);
+  color: #1f2937;
+}
+
+.card-back.silver {
+  background: linear-gradient(135deg, #9ca3af, #d1d5db);
+  color: #1f2937;
+  transform: rotateY(180deg);
+}
+
+.card-front.gold {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.card-back.gold {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+  transform: rotateY(180deg);
+}
+
+    /* Animation for buttons */
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Hero section animation */
+    .hero-title {
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .bg-gray-100 {
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+}
+
+h2 {
+  color: #1f2937; /* Couleur sombre pour le titre */
+}
+
+.grid div {
+  position: relative;
+  overflow: hidden;
+}
+
+.grid div:hover {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.grid div:hover span {
+  color: white;
+}
+
+.grid div::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+  transform: scale(0);
+  transition: transform 0.5s ease-in-out;
+  z-index: 0;
+}
+
+.grid div:hover::before {
+  transform: scale(1);
+}
+
+.grid div span {
+  position: relative;
+  z-index: 1;
+}
+
+
+  </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-900">
+
+  <!-- Navigation -->
+  <nav class="bg-black text-white py-4">
+    <div class="container mx-auto flex justify-between items-center px-6">
+      <!-- Logo -->
+      <a href="#" class="flex items-center">
+        <img src="SBIUIBS (1).png" alt="Logo AM2TECH" class="h-14 mr-3">
+        <span class="text-lg font-bold"></span>
+      </a>
+      <!-- Navigation Links -->
+      <ul class="flex space-x-6">
+        <li><a href="#hero" class="hover:text-gray-400">Accueil</a></li>
+        <li><a href="#features" class="hover:text-gray-400">Fonctionnalités</a></li>
+        <li><a href="#pricing" class="hover:text-gray-400">Tarifs</a></li>
+        <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 bg-black text-white">
+    <h1 class="text-5xl font-bold mb-4 hero-title">La carte de visite du futur</h1>
+    <p class="text-xl mb-6">NFC + QR + IA intégrée. Un simple geste, et tout est partagé.</p>
+    <button class="btn bg-white text-black px-6 py-3 rounded-2xl shadow-lg text-lg">Découvrir la démo</button>
+  </section>
+
+  <!-- Cartes Section -->
+  <section class="py-16 px-6">
+    <h2 class="text-4xl font-bold text-center mb-10">Nos Cartes de visite Digital</h2>
+    <p class="text-2xl font-bold text-center mb-8">Les cartes Classic,Metal ou Gold,son des produit personnalisable en impression ou en gravure.</p>
+    <div class="flex flex-wrap justify-center gap-10">
+  
+      <!-- Carte Noire -->
+      <div class="card-container" onclick="simulateNFC('https://am2tech.fr')">
+        <div class="card">
+          <div class="card-face card-front black">
+            <img src="SBIUIBS (1).png" alt="Logo AM2TECH" class="h-20 mb-4">
+            <h2 class="text-xl font-bold"></h2>
+            <p class="text-sm">Carte NFC Classic</p>
+          </div>
+          <div class="card-face card-back black">
+            <!-- <p>Email : contact@am2tech.fr</p>
+            <p>Tél : 07 56 89 45 32</p>
+            <a href="https://am2tech.fr" target="_blank" class="underline text-sm">Visiter le site</a> -->
+          </div>
+        </div>
+      </div>
+  
+      <!-- Carte Argentée -->
+      <div class="card-container" onclick="simulateNFC('https://am2tech.fr/argent')">
+        <div class="card">
+          <div class="card-face card-front silver">
+            <img src="SBIUIBS (1).png" alt="Logo AM2TECH" class="h-20 mb-4">
+            <h2 class="text-xl font-bold"></h2>
+            <p class="text-sm">Carte NFC Metal</p>
+          </div>
+          <div class="card-face card-back silver">
+            <!-- <p>Email : argent@am2tech.fr</p>
+            <p>Tél : 07 56 89 45 33</p>
+            <a href="https://am2tech.fr/argent" target="_blank" class="underline text-sm">Visiter le site</a> -->
+          </div>
+        </div>
+      </div>
+  
+      <!-- Carte Dorée -->
+      <div class="card-container" onclick="simulateNFC('https://am2tech.fr/gold')">
+        <div class="card">
+          <div class="card-face card-front gold">
+            <img src="SBIUIBS (1).png" alt="Logo AM2TECH" class="h-20 mb-4">
+            <h2 class="text-xl font-bold"></h2>
+            <p class="text-sm">Carte NFC Gold</p>
+          </div>
+          <div class="card-face card-back gold">
+            <!-- <p>Email : gold@am2tech.fr</p>
+            <p>Tél : 07 56 89 45 34</p>
+            <a href="https://am2tech.fr/gold" target="_blank" class="underline text-sm">Visiter le site</a> -->
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+
+  <!-- Adaptée à tous les métiers Section -->
+  <section class="py-16 px-6 bg-gray-100">
+  <h2 class="text-4xl font-bold text-center mb-10">Adaptée à tous les métiers</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto text-center">
+    <!-- Bouton Santé -->
+    <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+      <a href="sante.html" target="_blank" class="flex flex-col items-center">
+        <i class="fas fa-user-md text-indigo-600 text-4xl mb-4"></i>
+        <p class="font-bold">Santé</p>
+      </a>
+    </div>
+    <!-- Autres boutons -->
+    <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+      <a href="immo.html" target="_blank" class="flex flex-col items-center">
+      <i class="fas fa-home text-indigo-600 text-4xl mb-4"></i>
+      <p class="font-bold">Immobilier</p>
+      </a>
+    </div>
+    <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+      <i class="fas fa-cut text-indigo-600 text-4xl mb-4"></i>
+      <p class="font-bold">Coiffure & Beauté</p>
+    </div>
+    <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+      <i class="fas fa-chalkboard-teacher text-indigo-600 text-4xl mb-4"></i>
+      <p class="font-bold">Coaching</p>
+    </div>
+    <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+      <i class="fas fa-tools text-indigo-600 text-4xl mb-4"></i>
+      <p class="font-bold">Artisans</p>
+    </div>
+    <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+      <i class="fas fa-briefcase text-indigo-600 text-4xl mb-4"></i>
+      <p class="font-bold">Indépendants</p>
+    </div>
+    <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+      <i class="fas fa-graduation-cap text-indigo-600 text-4xl mb-4"></i>
+      <p class="font-bold">Éducation</p>
+    </div>
+    <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+      <a href="sante.html" target="_blank" class="flex flex-col items-center">
+        <i class="fa-solid fa-building text-indigo-600 text-4xl mb-4"></i>
+        <p class="font-bold">Commerçants</p>
+      </a>
+    </div>
+</section>
+ <!-- Fonctionnalités Section -->
+ <section class="bg-gray-100 py-16 px-6">
+  <h2 class="text-4xl font-bold text-center mb-10">Fonctionnalités puissantes</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
+    <div class="bg-white rounded-xl shadow p-6 hover:shadow-2xl transition transform hover:-translate-y-2">
+      🤖 <span class="text-indigo-600 font-bold">Chatbot IA intégré</span>
+    </div>
+    <div class="bg-white rounded-xl shadow p-6 hover:shadow-2xl transition transform hover:-translate-y-2">
+      📅 <span class="text-indigo-600 font-bold">Prise de RDV en ligne</span>
+    </div>
+    <div class="bg-white rounded-xl shadow p-6 hover:shadow-2xl transition transform hover:-translate-y-2">
+      📲 <span class="text-indigo-600 font-bold">Ajout automatique au téléphone</span>
+    </div>
+    <div class="bg-white rounded-xl shadow p-6 hover:shadow-2xl transition transform hover:-translate-y-2">
+      🌍 <span class="text-indigo-600 font-bold">Traduction automatique</span>
+    </div>
+    <div class="bg-white rounded-xl shadow p-6 hover:shadow-2xl transition transform hover:-translate-y-2">
+      ⭐ <span class="text-indigo-600 font-bold">Avis Google & réseaux</span>
+    </div>
+    <div class="bg-white rounded-xl shadow p-6 hover:shadow-2xl transition transform hover:-translate-y-2">
+      📊 <span class="text-indigo-600 font-bold">Statistiques en temps réel</span>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 px-6 bg-white">
+  <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">Pourquoi choisir AM2TECH ?</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto text-center">
+    <div class="why-box-light rounded-xl p-6">
+      <i class="fas fa-bolt text-yellow-500 text-4xl mb-4"></i>
+      <h3 class="font-semibold text-lg mb-2 text-gray-800">Technologie instantanée</h3>
+      <p class="text-sm text-gray-600">Partage immédiat avec NFC & QR Code en un geste.</p>
+    </div>
+    <div class="why-box-light rounded-xl p-6">
+      <i class="fas fa-shield-alt text-blue-500 text-4xl mb-4"></i>
+      <h3 class="font-semibold text-lg mb-2 text-gray-800">Sécurité & fiabilité</h3>
+      <p class="text-sm text-gray-600">Données hébergées en Europe avec confidentialité garantie.</p>
+    </div>
+    <div class="why-box-light rounded-xl p-6">
+      <i class="fas fa-magic text-purple-500 text-4xl mb-4"></i>
+      <h3 class="font-semibold text-lg mb-2 text-gray-800">Design personnalisé</h3>
+      <p class="text-sm text-gray-600">Cartes haut de gamme selon votre image et activité.</p>
+    </div>
+    <div class="why-box-light rounded-xl p-6">
+      <i class="fas fa-rocket text-green-500 text-4xl mb-4"></i>
+      <h3 class="font-semibold text-lg mb-2 text-gray-800">Prêt à l'emploi</h3>
+      <p class="text-sm text-gray-600">Aucune application nécessaire, tout est activé en 1 clic.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Tarifs Section -->
+<section class="py-16 px-6">
+  <h2 class="text-3xl font-bold text-center mb-10">Nos Tarifs</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <!-- Carte Noire -->
+    <div class="bg-white rounded-xl shadow-lg p-6 text-center border-t-4 border-gray-800">
+      <h3 class="text-xl font-bold mb-2">Classic</h3>
+      <p class="text-3xl font-extrabold mb-4">80€</p>
+      <ul class="text-sm text-gray-600 space-y-2 mb-6">
+        <li class="text-xl font-bold mb-2">Carte NFC + Lien personnalisé</li>
+        <!-- <li>Redirection personnalisée</li>
+        <li>Modèle simple & efficace</li> -->
+      </ul>
+      <a href="https://wa.me/33600000000" class="bg-gray-800 text-white px-5 py-2 rounded-full">Commander</a>
+    </div>
+    <!-- Carte Argentée -->
+    <div class="bg-white rounded-xl shadow-lg p-6 text-center border-t-4 border-gray-400">
+      <h3 class="text-xl font-bold mb-2">Smart</h3>
+      <p class="text-3xl font-extrabold mb-4">130€</p>
+      <ul class="text-sm text-gray-600 space-y-2 mb-6">
+        <li class="text-xl font-bold mb-2">+chatbot IA, Statistique </li>
+        <!-- <li>Style argent premium</li>
+        <li>Statistiques incluses</li> -->
+      </ul>
+      <a href="https://wa.me/33600000000" class="bg-gray-600 text-white px-5 py-2 rounded-full">Commander</a>
+    </div>
+    <!-- Carte Dorée -->
+    <div class="bg-white rounded-xl shadow-lg p-6 text-center border-t-4 border-yellow-500">
+      <h3 class="text-xl font-bold mb-2"></h3>
+      <p class="text-3xl font-extrabold mb-4">Pro</p>
+      <ul class="text-sm text-gray-600 space-y-2 mb-6">
+        <li class="text-xl font-bold mb-2">Design sur-messure + IA avancée</li>
+       <li>Sur devis</li> 
+        <!-- <li>Page pro personnalisée</li> -->
+      </ul>
+      <a href="https://wa.me/33600000000" class="bg-yellow-500 text-white px-5 py-2 rounded-full">Commander</a>
+    </div>
+  </div>
+</section>
+  <!-- Footer -->
+  <footer class="text-center py-10 text-gray-500">
+    © 2025 AM2TECH — Tous droits réservés
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartes NFC Animées</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .card-container {
+      perspective: 1000px;
+    }
+    .card {
+      width: 300px;
+      height: 180px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: rotateY(180deg);
+    }
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 1rem;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+      color: white;
+    }
+    .card-front.black { background: linear-gradient(135deg, #111827, #374151); }
+    .card-back.black { background: linear-gradient(135deg, #374151, #111827); transform: rotateY(180deg); }
+
+    .card-front.silver { background: linear-gradient(135deg, #d1d5db, #9ca3af); color: #1f2937; }
+    .card-back.silver { background: linear-gradient(135deg, #9ca3af, #d1d5db); color: #1f2937; transform: rotateY(180deg); }
+
+    .card-front.gold { background: linear-gradient(135deg, #f59e0b, #d97706); }
+    .card-back.gold { background: linear-gradient(135deg, #d97706, #f59e0b); transform: rotateY(180deg); }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <div class="min-h-screen flex flex-col items-center justify-center py-10">
+    <div class="flex flex-wrap justify-center gap-10">
+
+      <!-- Carte Noire -->
+      <div class="card-container" onclick="simulateNFC('https://am2tech.fr')">
+        <div class="card">
+          <div class="card-face card-front black">
+            <h2 class="text-xl font-bold">AM2TECH</h2>
+            <p class="text-sm">Carte NFC Noire</p>
+          </div>
+          <div class="card-face card-back black">
+            <p>Email : contact@am2tech.fr</p>
+            <p>Tél : 07 56 89 45 32</p>
+            <a href="https://am2tech.fr" target="_blank" class="underline text-sm">Visiter le site</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carte Argentée -->
+      <div class="card-container" onclick="simulateNFC('https://am2tech.fr/argent')">
+        <div class="card">
+          <div class="card-face card-front silver">
+            <h2 class="text-xl font-bold">AM2TECH</h2>
+            <p class="text-sm">Carte NFC Argentée</p>
+          </div>
+          <div class="card-face card-back silver">
+            <p>Email : argent@am2tech.fr</p>
+            <p>Tél : 07 56 89 45 33</p>
+            <a href="https://am2tech.fr/argent" target="_blank" class="underline text-sm">Visiter le site</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carte Dorée -->
+      <div class="card-container" onclick="simulateNFC('https://am2tech.fr/gold')">
+        <div class="card">
+          <div class="card-face card-front gold">
+            <h2 class="text-xl font-bold">AM2TECH</h2>
+            <p class="text-sm">Carte NFC Dorée</p>
+          </div>
+          <div class="card-face card-back gold">
+            <p>Email : gold@am2tech.fr</p>
+            <p>Tél : 07 56 89 45 34</p>
+            <a href="https://am2tech.fr/gold" target="_blank" class="underline text-sm">Visiter le site</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function simulateNFC(url) {
+  const notification = document.createElement("div");
+  notification.innerText = "📡 Lecture de la carte NFC en cours...";
+  notification.className = "fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-indigo-600 text-white px-6 py-3 rounded-full shadow-lg z-50 animate-bounce";
+
+  document.body.appendChild(notification);
+  setTimeout(() => {
+    window.open(url, "_blank");
+    notification.remove();
+  }, 1200);
+}
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+    <h1 class="text-5xl font-bold mb-4 hero-title">La carte de visite du futur</h1>
+    <p class="text-xl mb-6">NFC + QR + IA intégrée. Un simple geste, et tout est partagé.</p>
+    <button class="btn bg-white text-indigo-600 px-6 py-3 rounded-2xl shadow-lg text-lg">Découvrir la démo</button>
+  </section>
+
+  <!-- Section Cartes -->
+  <section class="py-16 px-6">
+    <h2 class="text-4xl font-bold text-center mb-10">Nos Cartes Digitales</h2>
+    <div class="flex flex-wrap justify-center gap-10">
+      <!-- Carte Noire -->
+      <div class="card-container" onclick="simulateNFC('https://am2tech.fr')">
+        <div class="card">
+          <div class="card-face card-front black">
+            <h2 class="text-xl font-bold">AM2TECH</h2>
+            <p class="text-sm">Carte NFC Noire</p>
+          </div>
+          <div class="card-face card-back black">
+            <p>Email : contact@am2tech.fr</p>
+            <p>Tél : 07 56 89 45 32</p>
+            <a href="https://am2tech.fr" target="_blank" class="underline text-sm">Visiter le site</a>
+          </div>
+        </div>
+      </div>
+      <!-- Carte Argentée -->
+      <div class="card-container" onclick="simulateNFC('https://am2tech.fr/argent')">
+        <div class="card">
+          <div class="card-face card-front silver">
+            <h2 class="text-xl font-bold">AM2TECH</h2>
+            <p class="text-sm">Carte NFC Argentée</p>
+          </div>
+          <div class="card-face card-back silver">
+            <p>Email : argent@am2tech.fr</p>
+            <p>Tél : 07 56 89 45 33</p>
+            <a href="https://am2tech.fr/argent" target="_blank" class="underline text-sm">Visiter le site</a>
+          </div>
+        </div>
+      </div>
+      <!-- Carte Dorée -->
+      <div class="card-container" onclick="simulateNFC('https://am2tech.fr/gold')">
+        <div class="card">
+          <div class="card-face card-front gold">
+            <h2 class="text-xl font-bold">AM2TECH</h2>
+            <p class="text-sm">Carte NFC Dorée</p>
+          </div>
+          <div class="card-face card-back gold">
+            <p>Email : gold@am2tech.fr</p>
+            <p>Tél : 07 56 89 45 34</p>
+            <a href="https://am2tech.fr/gold" target="_blank" class="underline text-sm">Visiter le site</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pourquoi AM2TECH -->
+  <section class="py-16 px-6 bg-gray-900">
+    <h2 class="text-3xl font-bold text-center mb-10 text-white">Pourquoi choisir AM2TECH ?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto text-center">
+      <div class="bg-gray-800 rounded-xl p-6 shadow hover:shadow-xl transition">
+        <i class="fas fa-bolt text-yellow-400 text-4xl mb-4"></i>
+        <h3 class="font-semibold text-lg mb-2">Technologie instantanée</h3>
+        <p class="text-sm text-gray-300">Partage immédiat avec NFC & QR Code en un geste.</p>
+      </div>
+      <div class="bg-gray-800 rounded-xl p-6 shadow hover:shadow-xl transition">
+        <i class="fas fa-shield-alt text-blue-400 text-4xl mb-4"></i>
+        <h3 class="font-semibold text-lg mb-2">Sécurité & fiabilité</h3>
+        <p class="text-sm text-gray-300">Vos données sont hébergées de manière sécurisée en Europe.</p>
+      </div>
+      <div class="bg-gray-800 rounded-xl p-6 shadow hover:shadow-xl transition">
+        <i class="fas fa-magic text-purple-400 text-4xl mb-4"></i>
+        <h3 class="font-semibold text-lg mb-2">Design personnalisé</h3>
+        <p class="text-sm text-gray-300">Cartes haut de gamme adaptées à votre métier et image.</p>
+      </div>
+      <div class="bg-gray-800 rounded-xl p-6 shadow hover:shadow-xl transition">
+        <i class="fas fa-rocket text-green-400 text-4xl mb-4"></i>
+        <h3 class="font-semibold text-lg mb-2">Prêt à l’emploi</h3>
+        <p class="text-sm text-gray-300">Reçu, activé, utilisé. Aucun logiciel à installer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bouton flottant WhatsApp -->
+  <a href="https://wa.me/33600000000" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300">
+    <i class="fab fa-whatsapp text-2xl"></i>
+  </a>
+
+  <!-- Scroll fluide -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+
+</body>
+</html>

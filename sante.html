@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carte Santé+ | Présentation du Produit</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fafb;
+      color: #123c5d;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a8cd8, #1576b3);
+      color: white;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    header p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+
+    section {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .features, .advantages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .feature, .advantage {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature:hover, .advantage:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature h3, .advantage h3 {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #1a8cd8;
+    }
+
+    .cta {
+      text-align: center;
+      margin: 3rem 0 2rem;
+    }
+
+    .cta a {
+      background: linear-gradient(135deg, #1a8cd8, #1576b3);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: background 0.3s ease;
+    }
+
+    .cta a:hover {
+      background: linear-gradient(135deg, #136ba0, #0f5a8a);
+    }
+
+    .price-box {
+      background-color: #e6f2fb;
+      border-left: 5px solid #1a8cd8;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      border-radius: 8px;
+    }
+
+    footer {
+      background: #123c5d;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Carte Santé+</h1>
+    <p>La carte de visite digitale et intelligente pour les professionnels de santé</p>
+  </header>
+
+  <section>
+    <h2 class="text-2xl font-bold text-center">🩺 Qu’est-ce que la Carte Santé+ ?</h2>
+    <p class="text-center mt-4">
+      La Carte Santé+ est une carte NFC connectée qui permet aux praticiens de partager instantanément leurs informations avec leurs patients : coordonnées, spécialité, prise de rendez-vous en ligne, chatbot, et bien plus.
+    </p>
+
+    <div class="features">
+      <div class="feature">
+        <h3>📇 Profil complet</h3>
+        <p>Nom, spécialité, photo, bio professionnelle.</p>
+      </div>
+      <div class="feature">
+        <h3>📱 Contact rapide</h3>
+        <p>Numéro, email, WhatsApp, lien cliquable.</p>
+      </div>
+      <div class="feature">
+        <h3>📍 Adresse & plan</h3>
+        <p>Géolocalisation facile du cabinet.</p>
+      </div>
+      <div class="feature">
+        <h3>📅 RDV en ligne</h3>
+        <p>Intégration Doctolib, Maiia, etc.</p>
+      </div>
+      <div class="feature">
+        <h3>🤖 Chatbot IA</h3>
+        <p>Assistant santé qui répond 24h/24 aux questions fréquentes.</p>
+      </div>
+      <div class="feature">
+        <h3>💳 Carte NFC</h3>
+        <p>Un simple contact avec un smartphone suffit !</p>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-center mt-10">💎 Les avantages de la Carte Santé+</h2>
+    <div class="advantages">
+      <div class="advantage">
+        <h3>🔹 Image professionnelle</h3>
+        <p>Valorisez votre activité avec un outil moderne.</p>
+      </div>
+      <div class="advantage">
+        <h3>🔹 Gain de temps</h3>
+        <p>Automatisez les infos pratiques pour vos patients.</p>
+      </div>
+      <div class="advantage">
+        <h3>🔹 Accessible à tous</h3>
+        <p>Fonctionne sur tout smartphone, sans appli.</p>
+      </div>
+      <div class="advantage">
+        <h3>🔹 Centralisation</h3>
+        <p>Toutes vos infos et contacts au même endroit.</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <a href="Gsante.html" target="_blank">Générateur Carte Santé+</a>
+    </div>
+
+    <div class="price-box">
+      🎁 <strong>Pack complet à partir de 49€ HT</strong><br />
+      Inclus : carte physique NFC + mini-site + chatbot + configuration
+    </div>
+
+    <div class="cta">
+      <a href="https://am2tech.fr/contact" target="_blank">📩 Je veux ma Carte Santé+</a>
+    </div>
+  </section>
+
+  <footer>
+    Une solution innovante proposée par AM2TECH · contact@am2tech.fr
+  </footer>
+
+</body>
+</html>
