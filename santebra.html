@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fiche Santé+</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .fade-in {
+      animation: fadeIn 1.2s ease-in-out forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-white min-h-screen flex items-center justify-center p-6">
+  <div class="bg-white rounded-3xl shadow-2xl p-10 max-w-xl w-full fade-in relative">
+    <div class="absolute top-4 right-4">
+      <lottie-player src="https://lottie.host/23935d69-3282-434b-a1e5-50289dbaccb3/duF07RxDXz.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+    </div>
+
+    <div class="flex items-center space-x-4 mb-8">
+      <img src="https://i.pravatar.cc/100" alt="Photo Profil" class="w-24 h-24 rounded-full border-4 border-blue-200 shadow-md">
+      <div>
+        <h1 class="text-3xl font-extrabold text-blue-800">Alex Dupont</h1>
+        <p class="text-gray-600 text-sm">Fiche Santé Numérique</p>
+      </div>
+    </div>
+
+    <div class="space-y-6 text-gray-800">
+      <div>
+        <p class="text-sm text-gray-500">🩸 Groupe sanguin</p>
+        <p class="text-xl font-semibold">O+</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">🦠 Maladie chronique</p>
+        <p class="text-lg">Diabète de type 1</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">⚠️ Allergies</p>
+        <p class="text-lg">Arachides, Pénicilline</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">💊 Traitement en cours</p>
+        <p class="text-lg">Insuline quotidienne</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">📞 Contact d'urgence</p>
+        <p class="text-lg font-semibold">Sophie Dupont</p>
+        <div class="flex flex-wrap gap-4 mt-3">
+          <a href="tel:+33611223344" class="bg-red-600 text-white px-4 py-2 rounded-lg shadow hover:bg-red-700 transition">📞 Appeler</a>
+          <button onclick="getCurrentLocation()" class="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg border hover:bg-blue-200 transition">📍 Ma position en temps réel</button>
+          <button onclick="goToHome()" class="bg-green-100 text-green-800 px-4 py-2 rounded-lg border hover:bg-green-200 transition">🏠 Maison</button>
+        </div>
+      </div>
+
+      <div id="mapContainer" class="mt-6 hidden">
+        <p class="text-sm text-gray-500 mb-2">📍 Plan en temps réel</p>
+        <div id="loadingMessage" class="text-sm text-gray-500">Chargement de la carte...</div>
+        <iframe id="mapFrame" class="w-full h-64 rounded-xl border shadow-md hidden" loading="lazy" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="text-center mt-10 text-xs text-gray-400">
+      © 2025 Carte Santé+ — Données confidentielles accessibles uniquement via NFC ou QR sécurisé.
+    </div>
+  </div>
+
+  <script>
+    function getCurrentLocation() {
+      const loading = document.getElementById("loadingMessage");
+      const mapFrame = document.getElementById("mapFrame");
+      const mapContainer = document.getElementById("mapContainer");
+
+      mapContainer.classList.remove("hidden");
+      loading.classList.remove("hidden");
+      mapFrame.classList.add("hidden");
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          mapFrame.src = `https://maps.google.com/maps?q=${lat},${lon}&z=15&output=embed`;
+          mapFrame.onload = () => {
+            loading.classList.add("hidden");
+            mapFrame.classList.remove("hidden");
+          };
+        }, error => {
+          alert("Impossible de récupérer votre position GPS.");
+          loading.classList.add("hidden");
+        });
+      } else {
+        alert("La géolocalisation n'est pas supportée par ce navigateur.");
+        loading.classList.add("hidden");
+      }
+    }
+
+    function goToHome() {
+      const destination = encodeURIComponent("3 Avenue Joseph Bédier, 75013 Paris");
+      const url = `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
