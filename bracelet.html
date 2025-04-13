@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bracelet NFC Santé+</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .fade-in { animation: fadeIn 1.2s ease-in-out forwards; opacity: 0; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+    <nav class="bg-black text-white py-4">
+        <div class="container mx-auto flex justify-between items-center px-6">
+          <!-- Logo -->
+          <a href="#" class="flex items-center">
+            <img src="SBIUIBS (1).png" alt="Logo AM2TECH" class="h-14 mr-3">
+            <span class="text-lg font-bold"></span>
+          </a>
+          <!-- Navigation Links -->
+          <ul class="flex space-x-6">
+            <li><a href="index.html" class="hover:text-gray-400">Accueil</a></li>
+            <li><a href="#features" class="hover:text-gray-400">Fonctionnalités</a></li>
+            <li><a href="#pricing" class="hover:text-gray-400">Tarifs</a></li>
+            <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-700 to-blue-500 text-white p-12 md:p-20 text-center relative overflow-hidden">
+    <div class="max-w-4xl mx-auto fade-in">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">Bracelet NFC Santé+</h1>
+      <p class="text-xl md:text-2xl mb-8">Un simple geste pour sauver des vies : vos infos de santé toujours accessibles.</p>
+      <a href="#commande" class="bg-white text-blue-600 font-semibold py-3 px-10 rounded-full shadow-lg hover:bg-blue-100 transition-all">Créer mon Bracelet</a>
+    </div>
+    <div class="absolute top-0 right-0 opacity-30">
+      <lottie-player src="https://lottie.host/142384a4-674b-4a28-b4f1-580e177b31c0/zM6cxiHLFf.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+    </div>
+  </section>
+
+  <!-- Pourquoi ? -->
+  <section class="p-12 md:p-20 text-center fade-in">
+    <h2 class="text-3xl font-bold mb-10">Pourquoi choisir le Bracelet Santé+ ?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
+      <div class="bg-blue-50 p-6 rounded-xl shadow-md">✅ Accès instantané à vos <strong>données médicales</strong></div>
+      <div class="bg-blue-50 p-6 rounded-xl shadow-md">✅ <strong>Alerte automatique</strong> à un proche ou aux secours</div>
+      <div class="bg-blue-50 p-6 rounded-xl shadow-md">✅ Étanche, léger, confortable et discret</div>
+      <div class="bg-blue-50 p-6 rounded-xl shadow-md">✅ Fonctionne avec tous les smartphones compatibles NFC</div>
+    </div>
+  </section>
+
+  <!-- Fonctionnement -->
+  <section class="bg-gray-100 p-12 md:p-20 text-center fade-in">
+    <h2 class="text-3xl font-bold mb-10">Comment ça fonctionne ?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-lg">
+      <div class="bg-white p-6 rounded-xl shadow">📲 Scannez le bracelet avec un smartphone</div>
+      <div class="bg-white p-6 rounded-xl shadow">🔎 Consultez la fiche santé : allergies, traitements…</div>
+      <div class="bg-white p-6 rounded-xl shadow">📞 Appelez un proche depuis la fiche</div>
+      <div class="bg-white p-6 rounded-xl shadow">🛠️ Mettez à jour vos données à tout moment</div>
+    </div>
+  </section>
+
+  <!-- Public cible -->
+  <section class="p-12 md:p-20 text-center fade-in">
+    <h2 class="text-3xl font-bold mb-10">Un bracelet pensé pour tous</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-lg">
+      <div class="bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform">👶 Enfants</div>
+      <div class="bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform">👵 Seniors</div>
+      <div class="bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform">🏃 Sportifs</div>
+      <div class="bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform">🩺 Patients chroniques</div>
+    </div>
+  </section>
+
+  <!-- Témoignages -->
+  <section class="bg-blue-50 p-12 md:p-20 text-center fade-in">
+    <h2 class="text-3xl font-bold mb-10">Ce qu’ils en pensent</h2>
+    <div class="max-w-3xl mx-auto space-y-8 text-lg italic">
+      <p>"Grâce au bracelet, mon père a pu être pris en charge rapidement. C’est une vraie sécurité."<br><span class="not-italic font-semibold">— Sophie, Paris</span></p>
+      <p>"Je pars souvent seul en randonnée, et ça me rassure d’avoir mes infos toujours disponibles."<br><span class="not-italic font-semibold">— Karim, Lyon</span></p>
+    </div>
+  </section>
+
+  <!-- Commande -->
+  <section id="commande" class="p-12 md:p-20 text-center fade-in bg-gray-100">
+    <h2 class="text-3xl font-bold mb-10">Commandez votre Bracelet Santé+ maintenant</h2>
+    <form class="max-w-2xl mx-auto space-y-6 text-left">
+      <input type="text" placeholder="Prénom / Nom" class="w-full p-4 border border-gray-300 rounded-lg">
+      <input type="email" placeholder="Adresse e-mail" class="w-full p-4 border border-gray-300 rounded-lg">
+      <select class="w-full p-4 border border-gray-300 rounded-lg">
+        <option>Couleur - Noir</option>
+        <option>Couleur - Bleu</option>
+        <option>Couleur - Rose</option>
+      </select>
+      <select class="w-full p-4 border border-gray-300 rounded-lg">
+        <option>Taille - Adulte</option>
+        <option>Taille - Enfant</option>
+      </select>
+      <textarea placeholder="Infos santé (facultatif)" class="w-full p-4 border border-gray-300 rounded-lg"></textarea>
+      <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 px-6 rounded-lg hover:bg-blue-700 transition-all">Créer ma fiche santé et commander</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-200 text-center p-6 text-sm fade-in">
+    &copy; 2025 AM2TECH — Mentions légales | Contact : am2tech@outlook.com
+  </footer>
+</body>
+</html>
