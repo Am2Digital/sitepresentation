@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte Immo+ - Style Moderne</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    .social-icons a .fa-linkedin { color: #0077B5; }   /* Bleu LinkedIn */
+.social-icons a .fa-instagram { color: #E4405F; }  /* Rose Instagram */
+.social-icons a .fa-facebook { color: #1877F2; }   /* Bleu Facebook */
+.social-icons a .fa-whatsapp { color: #25D366; }   /* Vert WhatsApp */
+.social-icons a .fa-twitter { color: #1DA1F2; }     /* Bleu Twitter */
+.social-icons a .fa-youtube { color: #FF0000; } 
+    body {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: 100%;
+      max-width: 1200px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    form {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    form input {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.6rem 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    form input:focus {
+      outline: none;
+      border-color: #dadde0;
+      box-shadow: 0 0 5px rgba(122, 124, 126, 0.5);
+    }
+
+    .profile-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      background: #2a2a2b;
+    }
+
+    .name {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #0b0b0b;
+      margin-bottom: 1rem;
+    }
+
+    .button {
+      background: #2a2a2b;
+      border: none;
+      border-radius: 8px;
+      padding: 0.8rem;
+      margin: 0.4rem 0;
+      width: 100%;
+      color: #fff;
+      font-size: 1rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .button:hover {
+      background: #2a2a2b;
+      transform: scale(1.02);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .social-icons i {
+      font-size: 1.6rem;
+      /* background: #f8f8f8; */
+      transition: color 0.3s;
+    }
+/* 
+    .social-icons i:hover {
+      background: #f0f0f1;
+    } */
+
+    .actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+    .actions button {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      background: #2a2a2b;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .actions button:hover {
+      background: #3b3b3b;
+      transform: scale(1.02);
+    }
+
+    .color-picker {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
+    .color-picker input {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 4px rgba(73, 73, 73, 0.1);
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .actions {
+        flex-direction: row;
+        gap: 1rem;
+      }
+      .actions {
+  flex-direction: row;
+  justify-content: center;
+}
+
+      form input {
+        margin: 0.5rem 0;
+      }
+
+      .button, .actions button {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <form id="infoForm">
+    <input type="file" id="inputPhoto" placeholder="Télécharger la photo" accept="image/*">
+    <input type="text" id="inputName" placeholder="Nom complet">
+    <input type="tel" id="inputPhone" placeholder="Téléphone">
+    <input type="email" id="inputEmail" placeholder="Email">
+    <input type="email" id="inputEmail" placeholder="calandrier">
+    <input type="url" id="inputLinkedIn" placeholder="LinkedIn URL">
+    <input type="url" id="inputInstagram" placeholder="Instagram URL">
+    <input type="url" id="inputFacebook" placeholder="Facebook URL">
+    <input type="url" id="inputSms" placeholder="Sms URL">
+    <input type="url" id="inputTwitter" placeholder="Twitter URL">
+    <input type="url" id="inputYouTube" placeholder="YouTube URL">
+
+    <!-- Palette de couleurs -->
+    <div class="color-picker">
+      <input type="color" id="color1" value="#007bff" title="Couleur 1">
+    </div>
+  </form>
+
+  <div class="profile-card">
+    <img id="photo" class="profile-img" src="https://via.placeholder.com/120" alt="Photo">
+    <div class="name" id="name">Nom complet</div>
+
+    <button class="button" onclick="callUser()"><i class="fas fa-phone"></i> Appeler</button>
+    <button class="button" onclick="emailUser()"><i class="fas fa-envelope"></i> Email</button>
+    <button class="button" onclick="smsUser()"><i class="fas fa-calendar"></i> Prendre rendez-vous</button>
+
+    <div class="social-icons">
+      <a id="linkedinLink" href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a id="instagramLink" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a id="facebookLink" href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a id="whatsappLink" href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a id="twitterLink" href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a id="youtubeLink" href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <div class="actions">
+      <button onclick="saveContact()"><i class="fas fa-download"></i> Sauvegarder</button>
+      <button onclick="shareProfile()"><i class="fas fa-paper-plane"></i> Envoyer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const inputName = document.getElementById('inputName');
+  const inputPhoto = document.getElementById('inputPhoto');
+  const colorInputs = document.querySelectorAll('.color-picker input');
+
+  inputName.addEventListener('input', () => {
+    document.getElementById('name').textContent = inputName.value || 'Nom complet';
+  });
+
+  inputPhoto.addEventListener('change', () => {
+    const file = inputPhoto.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('photo').src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  colorInputs.forEach(input => {
+    input.addEventListener('input', (e) => {
+      document.querySelector('.profile-card').style.backgroundColor = e.target.value;
+    });
+  });
+
+  function callUser() {
+    const phone = document.getElementById('inputPhone').value;
+    if (phone) window.location.href = `tel:${phone}`;
+  }
+
+  function emailUser() {
+    const email = document.getElementById('inputEmail').value;
+    if (email) window.location.href = `mailto:${email}`;
+  }
+
+  function saveContact() {
+    const name = document.getElementById('inputName').value || 'Nom complet';
+    const phone = document.getElementById('inputPhone').value || '0600000000';
+    const email = document.getElementById('inputEmail').value || 'email@example.com';
+    const vCardData = `BEGIN:VCARD\nVERSION:3.0\nN:;${name};;;\nFN:${name}\nTEL:${phone}\nEMAIL:${email}\nEND:VCARD`;
+    const blob = new Blob([vCardData], { type: 'text/vcard' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${name}.vcf`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function shareProfile() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Carte Immo+',
+        text: 'Voici mes infos professionnelles 📇',
+        url: window.location.href
+      });
+    } else {
+      alert("Le partage n'est pas supporté sur ce navigateur.");
+    }
+  }
+</script>
+</body>
+</html>
