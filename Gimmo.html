@@ -9,7 +9,12 @@
     * {
       box-sizing: border-box;
     }
-
+    .social-icons a .fa-linkedin { color: #0077B5; }   /* Bleu LinkedIn */
+.social-icons a .fa-instagram { color: #E4405F; }  /* Rose Instagram */
+.social-icons a .fa-facebook { color: #1877F2; }   /* Bleu Facebook */
+.social-icons a .fa-whatsapp { color: #25D366; }   /* Vert WhatsApp */
+.social-icons a .fa-twitter { color: #1DA1F2; }     /* Bleu Twitter */
+.social-icons a .fa-youtube { color: #FF0000; } 
     body {
       background: linear-gradient(135deg, #f8f9fa, #e9ecef);
       font-family: 'Segoe UI', sans-serif;
@@ -121,12 +126,13 @@
     } */
 
     .actions {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      margin-top: 1.5rem;
-    }
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
     .actions button {
       padding: 0.8rem;
       border: none;
@@ -173,6 +179,10 @@
         flex-direction: row;
         gap: 1rem;
       }
+      .actions {
+  flex-direction: row;
+  justify-content: center;
+}
 
       form input {
         margin: 0.5rem 0;
@@ -191,6 +201,8 @@
     <input type="text" id="inputName" placeholder="Nom complet">
     <input type="tel" id="inputPhone" placeholder="Téléphone">
     <input type="email" id="inputEmail" placeholder="Email">
+    <input type="email" id="inputEmail" placeholder="calandrier">
+    <input type="text" id="inputAddress" placeholder="Adresse (ex: 10 Rue de Paris, Lyon)">
     <input type="url" id="inputLinkedIn" placeholder="LinkedIn URL">
     <input type="url" id="inputInstagram" placeholder="Instagram URL">
     <input type="url" id="inputFacebook" placeholder="Facebook URL">
@@ -210,7 +222,8 @@
 
     <button class="button" onclick="callUser()"><i class="fas fa-phone"></i> Appeler</button>
     <button class="button" onclick="emailUser()"><i class="fas fa-envelope"></i> Email</button>
-    <button class="button" onclick="smsUser()"><i class="fas fa-sms"></i> Sms</button>
+    <button class="button" onclick="smsUser()"><i class="fas fa-calendar"></i> Prendre rendez-vous</button>
+    <button class="button" onclick="openItinerary()"><i class="fas fa-location-dot"></i> Itinéraire</button>
 
     <div class="social-icons">
       <a id="linkedinLink" href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -229,6 +242,27 @@
 </div>
 
 <script>
+  function openItinerary() {
+  const destination = document.getElementById('inputAddress').value;
+  if (!destination) {
+    alert("Veuillez saisir une adresse de destination.");
+    return;
+  }
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      const encodedDestination = encodeURIComponent(destination);
+      const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${encodedDestination}&travelmode=driving`;
+      window.open(mapsUrl, '_blank');
+    }, (error) => {
+      alert("Impossible d’obtenir votre position actuelle.");
+    });
+  } else {
+    alert("La géolocalisation n’est pas supportée par ce navigateur.");
+  }
+}
+
   const inputName = document.getElementById('inputName');
   const inputPhoto = document.getElementById('inputPhoto');
   const colorInputs = document.querySelectorAll('.color-picker input');
